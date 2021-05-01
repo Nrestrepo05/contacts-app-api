@@ -1,0 +1,32 @@
+{
+  "name": "contacts-app-backend",
+  "version": "1.0.0",
+  "description": "this is an api for a contacts app",
+  "main": "server.js",
+  "scripts": {
+    "test": "jest",
+    "eslint:init": "eslint --init",
+    "dotenv:setup": "node ./dotenv_setup.js",
+    "nodemon": "nodemon"
+  },
+  "keywords": [
+    "api",
+    "contacts"
+  ],
+  "author": "nrestrepo05",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.12.7"
+  },
+  "devDependencies": {
+    "eslint": "^7.25.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-prettier": "^3.4.0",
+    "nodemon": "^2.0.7",
+    "prettier": "^2.2.1"
+  }
+}
