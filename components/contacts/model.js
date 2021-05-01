@@ -19,7 +19,8 @@ const ContactSchema = new Schema({
   },
   company: String,
   phone_number: {
-    type: Number,
+    type: String,
+    match: /[+]*[\d]{0,4}[\d]{3,4}[0-9]{7,9}/,
     unique: true,
   },
   email: {
