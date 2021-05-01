@@ -6,7 +6,7 @@ const router = Router();
 
 router.get('/', async (req, res) => {
   try {
-    const contacts = await controller.retrieveContacts();
+    const contacts = await controller.getContacts();
     return response.success(req, res, { contacts }, 200);
   } catch (error) {
     return response.error(req, res, 'Server Error', 500, error.message);
@@ -16,7 +16,7 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
   try {
     const { id } = req.params;
-    const contact = await controller.retrieveContactById(id);
+    const contact = await controller.getContactById(id);
     return response.success(req, res, contact, 200);
   } catch (error) {
     console.log(error);
