@@ -14,6 +14,10 @@ app.use(bodyParser.json());
 
 routes(app);
 
-app.listen(port, () => {
-  console.log(`Example app listening at http://${process.env.HOST || 'localhost'}:${port}`);
-});
+if (require.main) {
+  app.listen(port, () => {
+    console.log(`Example app listening at http://${process.env.HOST || 'localhost'}:${port}`);
+  });
+}
+
+module.exports = app;
