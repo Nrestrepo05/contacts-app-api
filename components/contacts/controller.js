@@ -36,7 +36,7 @@ async function updateContact(id, contactInfo) {
 
 async function deleteContact(id) {
   try {
-    return await store.delete(id);
+    return await store.deleteContact(id);
   } catch (error) {
     return error;
   }

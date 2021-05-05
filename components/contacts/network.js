@@ -57,7 +57,7 @@ router.put('/:id', async (req, res) => {
 
 router.delete('/:id', async (req, res) => {
   try {
-    await controller.deleteContact(req.params.id, req.body.contact);
+    await controller.deleteContact(req.params.id);
     return response.success(req, res, 'Deleted successfully', 200);
   } catch (error) {
     return response.error(req, res, 'Invalid information', 400, error.message);
