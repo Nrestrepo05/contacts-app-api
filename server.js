@@ -5,7 +5,7 @@ const cors = require('cors');
 const db = require('./db');
 const routes = require('./network/routes');
 
-const port = process.env.CONTACTS_DB_PORT || 5050;
+const port = process.env.PORT || 5050;
 const irb = `mongodb+srv://${process.env.CONTACTS_DB_USER}:${process.env.CONTACTS_DB_PASSWORD}@cluster0.pbyrj.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
 
 db(irb, process.env.CONTACTS_DB_NAME);
