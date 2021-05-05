@@ -6,8 +6,12 @@ const router = Router();
 
 router.get('/', async (req, res) => {
   try {
-    const contacts = await controller.getContacts();
-    return response.success(req, res, { contacts }, 200);
+    const {
+      contacts,
+      numberOfContacts,
+    } = await controller.getContacts(req.query.page, req.query.search);
+
+    return response.success(req, res, { contacts, pages: Math.ceil(numberOfContacts / 10) }, 200);
   } catch (error) {
     return response.error(req, res, 'Server Error', 500, error.message);
   }

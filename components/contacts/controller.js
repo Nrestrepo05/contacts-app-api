@@ -1,8 +1,8 @@
 const store = require('./store');
 
-async function getContacts() {
+async function getContacts(page, search) {
   try {
-    return await store.getContacts();
+    return await store.getContacts(page, search);
   } catch (error) {
     console.log(error.message);
     return error;
@@ -28,7 +28,7 @@ async function addContact(contact) {
 
 async function updateContact(id, contactInfo) {
   try {
-    return await store.update(id, contactInfo);
+    return await store.updateContact(id, contactInfo);
   } catch (error) {
     return error;
   }

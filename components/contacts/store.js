@@ -1,9 +1,42 @@
 const ContactModel = require('./model');
 
-async function getContacts() {
+async function getContacts(page, search) {
   try {
-    const contacts = await ContactModel.find();
-    return contacts;
+    let numberOfContacts = 0;
+    const searchRegex = new RegExp(search, 'i');
+    const searchExpression = {
+      $or: [
+        { name: searchRegex },
+        { last_name: searchRegex },
+        { email: searchRegex },
+        { phone_number: searchRegex },
+        { company: searchRegex },
+      ],
+    };
+
+    if (!search) {
+      await ContactModel.estimatedDocumentCount((err, count) => {
+        if (err) {
+          console.log(err);
+        } else {
+          numberOfContacts = count;
+        }
+      });
+    } else {
+      await ContactModel.countDocuments(searchExpression, (err, count) => {
+        if (err) {
+          console.log(err);
+        } else {
+          numberOfContacts = count;
+        }
+      });
+    }
+
+    console.log(numberOfContacts);
+    const contacts = await ContactModel.find(searchExpression)
+      .limit(10)
+      .skip((page - 1) * 10);
+    return { contacts, numberOfContacts };
   } catch (error) {
     return error;
   }
