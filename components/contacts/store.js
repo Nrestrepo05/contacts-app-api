@@ -32,7 +32,6 @@ async function getContacts(page, search) {
       });
     }
 
-    console.log(numberOfContacts);
     const contacts = await ContactModel.find(searchExpression)
       .limit(10)
       .skip((page - 1) * 10);
