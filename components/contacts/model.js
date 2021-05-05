@@ -6,19 +6,21 @@ const ContactSchema = new Schema({
   name: {
     type: String,
     required: true,
-    minLength: 2,
-    maxLength: 70,
-    match: [/^[A-Za-z]+$/, 'name can only contains letter'],
+    minLength: [2, 'name should have at least 2 characters'],
+    maxLength: [70, 'name is too long'],
+    match: [/^[A-Za-z\s]+$/, 'name can only contains letters'],
   },
   last_name: {
     type: String,
     required: true,
-    match: [/^[A-Za-z]+$/, 'last name can only contains letter'],
+    minLength: [2, 'last name should have at least 2 characters'],
+    maxLength: [70, 'last name is too long'],
+    match: [/^[A-Za-z\s]+$/, 'last name can only contains letters'],
   },
   company: {
     type: String,
     minLength: 0,
-    maxLength: 70,
+    maxLength: [70, 'company is too long'],
   },
   phone_number: {
     type: String,
