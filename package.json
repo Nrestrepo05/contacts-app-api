@@ -2,9 +2,13 @@
   "name": "contacts-app-backend",
   "version": "1.0.0",
   "description": "this is an api for a contacts app",
+  "engines": {
+    "node": "16.0.0"
+  },
   "main": "server.js",
   "scripts": {
     "test": "jest",
+    "start": "node server.js",
     "eslint:init": "eslint --init",
     "dotenv:setup": "node ./dotenv_setup.js",
     "nodemon": "nodemon"
