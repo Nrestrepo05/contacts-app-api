@@ -6,14 +6,14 @@ const ContactSchema = new Schema({
   name: {
     type: String,
     required: true,
-    match: /[\w\s]+/,
+    match: /[a-zA-z\s]+/,
     minLength: 2,
     maxLength: 70,
   },
   last_name: {
     type: String,
     required: true,
-    match: /[\w\s]+/,
+    match: /[a-zA-z\s]+/,
     minLength: 2,
     maxLength: 70,
   },
