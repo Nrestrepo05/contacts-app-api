@@ -31,7 +31,7 @@ async function getContacts(page, search) {
     });
   }
 
-  const contacts = await ContactModel.find(searchExpression)
+  const contacts = await ContactModel.find(searchExpression).sort('name')
     .limit(10)
     .skip((page - 1) * 10);
   return { contacts, numberOfContacts };
