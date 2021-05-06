@@ -1,45 +1,23 @@
 const store = require('./store');
 
 async function getContacts(page, search) {
-  try {
-    return await store.getContacts(page, search);
-  } catch (error) {
-    console.log(error.message);
-    return error;
-  }
+  return store.getContacts(page, search);
 }
 
 async function getContactById(id) {
-  try {
-    return await store.getContact(id);
-  } catch (error) {
-    return error;
-  }
+  return store.getContact(id);
 }
 
 async function addContact(contact) {
-  try {
-    return store.addContact(contact);
-  } catch (error) {
-    console.error(error.message);
-    return error;
-  }
+  return store.addContact(contact);
 }
 
 async function updateContact(id, contactInfo) {
-  try {
-    return await store.updateContact(id, contactInfo);
-  } catch (error) {
-    return error;
-  }
+  return store.updateContact(id, contactInfo);
 }
 
 async function deleteContact(id) {
-  try {
-    return await store.deleteContact(id);
-  } catch (error) {
-    return error;
-  }
+  return store.deleteContact(id);
 }
 
 module.exports = {

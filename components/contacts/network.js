@@ -48,13 +48,26 @@ router.post('/', async (req, res) => {
     const contact = await controller.addContact(req.body.contact);
     return response.success(req, res, { contact }, 201);
   } catch (error) {
-    const errors = [];
+    const errors = {};
     let statusCode;
-    if (error.errors.name) errors.push(error.errors.name.message);
-    if (error.errors.last_name) errors.push(error.errors.last_name.message);
-    if (error.errors.email) errors.push(error.errors.email.message);
-    if (error.errors.phone_number) errors.push(error.errors.phone_number.message);
-    if (error.errors.company) errors.push(error.errors.company.message);
+    if (error.name === 'MongoError') {
+      console.log('im');
+      if (error.message.includes('phone_number')) {
+        console.log('in');
+        errors.phone_number = 'phone number must be unique';
+      }
+      if (error.message.includes('email')) {
+        errors.email = 'email must be unique';
+      }
+    }
+
+    if (error.name !== 'MongoError') {
+      if (error.errors.name) errors.name = error.errors.name.message;
+      if (error.errors.last_name) errors.last_name = error.errors.last_name.message;
+      if (error.errors.email) errors.email = error.errors.email.message;
+      if (error.errors.phone_number) errors.phone_number = error.errors.phone_number.message;
+      if (error.errors.company) errors.message = error.errors.company.message;
+    }
 
     if (errors) { statusCode = 400; } else { statusCode = 500; }
 
@@ -64,17 +77,30 @@ router.post('/', async (req, res) => {
 
 router.patch('/:id', async (req, res) => {
   try {
-    console.log('hello');
     const contact = await controller.updateContact(req.params.id, req.body.contact);
+
     return response.success(req, res, { contact }, 200);
   } catch (error) {
-    const errors = [];
+    console.log('pet');
+    const errors = {};
     let statusCode;
-    if (error.errors.name) errors.push(error.errors.name.message);
-    if (error.errors.last_name) errors.push(error.errors.last_name.message);
-    if (error.errors.email) errors.push(error.errors.email.message);
-    if (error.errors.phone_number) errors.push(error.errors.phone_number.message);
-    if (error.errors.company) errors.push(error.errors.company.message);
+    if (error.name === 'MongoError') {
+      console.log(error.message);
+      if (error.message.includes('phone_number')) {
+        errors.phone_number = 'phone number must be unique';
+      }
+      if (error.message.includes('email')) {
+        errors.email = 'email must be unique';
+      }
+    }
+
+    if (error.name !== 'MongoError') {
+      if (error.errors.name) errors.name = error.errors.name.message;
+      if (error.errors.last_name) errors.last_name = error.errors.last_name.message;
+      if (error.errors.email) errors.email = error.errors.email.message;
+      if (error.errors.phone_number) errors.phone_number = error.errors.phone_number.message;
+      if (error.errors.company) errors.message = error.errors.company.message;
+    }
 
     if (errors) { statusCode = 400; } else { statusCode = 500; }
 
@@ -85,15 +111,28 @@ router.patch('/:id', async (req, res) => {
 router.put('/:id', async (req, res) => {
   try {
     const contact = await controller.updateContact(req.params.id, req.body.contact);
+
     return response.success(req, res, { contact }, 200);
   } catch (error) {
-    const errors = [];
+    const errors = {};
     let statusCode;
-    if (error.errors.name) errors.push(error.errors.name.message);
-    if (error.errors.last_name) errors.push(error.errors.last_name.message);
-    if (error.errors.email) errors.push(error.errors.email.message);
-    if (error.errors.phone_number) errors.push(error.errors.phone_number.message);
-    if (error.errors.company) errors.push(error.errors.company.message);
+    if (error.name === 'MongoError') {
+      console.log(error.message);
+      if (error.message.includes('phone_number')) {
+        errors.phone_number = 'phone number must be unique';
+      }
+      if (error.message.includes('email')) {
+        errors.email = 'email must be unique';
+      }
+    }
+
+    if (error.name !== 'MongoError') {
+      if (error.errors.name) errors.name = error.errors.name.message;
+      if (error.errors.last_name) errors.last_name = error.errors.last_name.message;
+      if (error.errors.email) errors.email = error.errors.email.message;
+      if (error.errors.phone_number) errors.phone_number = error.errors.phone_number.message;
+      if (error.errors.company) errors.message = error.errors.company.message;
+    }
 
     if (errors) { statusCode = 400; } else { statusCode = 500; }
 
