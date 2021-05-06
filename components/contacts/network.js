@@ -23,7 +23,6 @@ router.get('/:id', async (req, res) => {
     const contact = await controller.getContactById(id);
     return response.success(req, res, contact, 200);
   } catch (error) {
-    console.log(error);
     return response.error(req, res, 'Información invalida', 400, error.message);
   }
 });
