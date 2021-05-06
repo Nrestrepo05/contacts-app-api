@@ -45,8 +45,8 @@ router.get('/:id', async (req, res) => {
 
 router.post('/', async (req, res) => {
   try {
-    await controller.addContact(req.body.contact);
-    return response.success(req, res, 'Created successfully', 201);
+    const contact = await controller.addContact(req.body.contact);
+    return response.success(req, res, { contact }, 201);
   } catch (error) {
     const errors = [];
     let statusCode;
@@ -64,8 +64,9 @@ router.post('/', async (req, res) => {
 
 router.patch('/:id', async (req, res) => {
   try {
-    await controller.updateContact(req.params.id, req.body.contact);
-    return response.success(req, res, 'Updated successfully', 200);
+    console.log('hello');
+    const contact = await controller.updateContact(req.params.id, req.body.contact);
+    return response.success(req, res, { contact }, 200);
   } catch (error) {
     const errors = [];
     let statusCode;
@@ -83,8 +84,8 @@ router.patch('/:id', async (req, res) => {
 
 router.put('/:id', async (req, res) => {
   try {
-    await controller.updateContact(req.params.id, req.body.contact);
-    return response.success(req, res, 'Updated successfully', 200);
+    const contact = await controller.updateContact(req.params.id, req.body.contact);
+    return response.success(req, res, { contact }, 200);
   } catch (error) {
     const errors = [];
     let statusCode;
