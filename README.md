@@ -27,9 +27,9 @@ If you already created your DB just follow the steps below:
 	```
 Now it is running!
 
-## Contributing to <project_name>
+## Contributing to Contacts API
 
-To contribute to Contacts App API, follow these steps:
+To contribute to Contacts API, follow these steps:
 
 1.  Fork this repository.
 2.  Create a branch:  `git checkout -b <branch_name>`.
@@ -51,4 +51,4 @@ If you want to contact me you can reach me at  [nrestrepo.r05@gmail.com](mailto:
 
 ## License
 
-This project uses the following license:  [MIT](./LICENSE.md).
+This project uses the following license:  [MIT](./LICENSE).
