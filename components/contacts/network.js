@@ -51,9 +51,7 @@ router.post('/', async (req, res) => {
     const errors = {};
     let statusCode;
     if (error.name === 'MongoError') {
-      console.log('im');
       if (error.message.includes('phone_number')) {
-        console.log('in');
         errors.phone_number = 'phone number must be unique';
       }
       if (error.message.includes('email')) {
