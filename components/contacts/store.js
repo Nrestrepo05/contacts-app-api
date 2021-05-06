@@ -61,7 +61,7 @@ function addContact(contact) {
 
 async function updateContact(id, contactInfo) {
   try {
-    const contact = await ContactModel.findByIdAndUpdate(id, contactInfo);
+    const contact = await ContactModel.findByIdAndUpdate(id, contactInfo, { new: true });
     return contact;
   } catch (error) {
     return error;
